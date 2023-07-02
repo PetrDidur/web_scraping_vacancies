@@ -1,16 +1,36 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from utils import get_data_vacancies, get_employers_data
+from db_manager import DBManager
+import psycopg2
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+db_manager = DBManager(host="localhost", database="hh", user="postgres", password="9184")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Подключение к базе данных
+db_manager.connect()
+
+
+# Вывод результатов
+#db_manager.get_companies_and_vacancies_count()
+#db_manager.get_all_vacancies()
+#db_manager.get_avg_salary()
+#db_manager.get_vacancies_with_higher_salary()
+db_manager.get_vacancies_with_keyword("Python")
+
+# Закрытие соединения с базой данных
+db_manager.disconnect()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
