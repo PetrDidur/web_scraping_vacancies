@@ -50,12 +50,45 @@ def get_data_vacancies():
 
      return vacancies_data_clean
 
+def create_tables():
+    conn = psycopg2.connect(
+        host="localhost",
+        database="hh",
+        user="postgres",
+        password="9184"
+    )
+    create_employers_table = """
+    CREATE TABLE employers (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100)
+        );
+    """
+
+    with conn.cursor() as cursor:
+        cursor.execute(create_employers_table)
+    conn.commit()
+
+    create_vacancies_table = """
+    CREATE TABLE vacancies (
+        name VARCHAR(100),
+        employer VARCHAR(100),
+        employer_id INTEGER REFERENCES employers(id),
+        salary INTEGER, 
+        url VARCHAR
+        );
+    """
+
+    with conn.cursor() as cursor:
+        cursor.execute(create_vacancies_table)
+    conn.commit()
+
+
 
 def db_handler():
     conn = psycopg2.connect(
     host="localhost",
     database="hh",
-    ser="postgres",
+    user="postgres",
     password="9184")
 
     employers_data = get_employers_data()
