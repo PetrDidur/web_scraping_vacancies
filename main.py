@@ -4,12 +4,12 @@ import psycopg2
 
 
 
-db_manager = DBManager(host="localhost", database="hh", user="postgres", password="9184", port="5432")
-vacancies_data = get_data_vacancies()
-employers_data = get_employers_data()
+db_manager = DBManager(host="localhost", database="postgres", user="postgres", password="9184", port="5432")
 
 
-db_manager.get_all_vacancies()
+
+
+
 
 
 

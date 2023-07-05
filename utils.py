@@ -7,9 +7,8 @@ def get_employers_data():
      for id in employers_id:
           url = f"https://api.hh.ru/employers/{id}"
           params = {
-               'page' : 0,
-               'per_page' : 10,
-               'pages': 10
+               'page': 0,
+               'per_page': 10
           }
           response = requests.get(url, params=params)
           employers_data = response.json()
